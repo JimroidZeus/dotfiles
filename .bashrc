@@ -106,14 +106,3 @@ alias gp='git pull'
 alias gpo='git pull origin'
 alias gpsh='git push'
 alias gpsho="git push origin"
-
-#CNO OTTO FLEET Aliases
-alias fm='ssh administrator@torfms81'
-alias otto_101='ssh administrator@10.35.114.190'
-alias otto_106='ssh administrator@10.35.114.191'
-alias otto_134='ssh administrator@10.35.114.192'
-alias otto_135='ssh administrator@10.35.114.193'
-
-#CMO OTTO Aliases
-alias cmo_fm='ssh administrator@10.37.22.22'
-alias otto_130='ssh administrator@10.37.108.31'
