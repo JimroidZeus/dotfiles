@@ -7,12 +7,12 @@ if [ -f /etc/bashrc ]; then
     ./etc/bashrc
 fi
 
-export LC_ALL=en_CA.UTF-8
-export LANG=en_CA.UTF-8
-export LANGUAGE=en_CA.UTF-8
+export LC_ALL=en_GB.UTF-8
+export LANG=en_GB.UTF-8
+export LANGUAGE=en_GB.UTF-8
 
 #Set directory colors
-eval `dircolors ~/.dir_colors`
+#eval `dircolors ~/.dir_colors`
 
 PROMPT_COMMAND='exit_code; __prompt_command; history -a'
 
@@ -75,14 +75,9 @@ function __prompt_command(){
 }
 export PS1
 
-function sublime(){
-    /c/Program\ Files/Sublime\ Text\ 3/sublime_text "$1" &
-}
-
-alias subl="C:/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
-
-alias otto='cd ~/Documents/Connected\ Factory/Otto'
-alias cf='cd ~/Documents/Connected\ Factory/'
+#function sublime(){
+#    /c/Program\ Files/Sublime\ Text\ 3/sublime_text "$1" &
+#}
 
 alias ..='cd ..'
 alias ...='cd ..; cd ..'
@@ -107,13 +102,3 @@ alias gpo='git pull origin'
 alias gpsh='git push'
 alias gpsho="git push origin"
 
-#CNO OTTO FLEET Aliases
-alias fm='ssh administrator@torfms81'
-alias otto_101='ssh administrator@10.35.114.190'
-alias otto_106='ssh administrator@10.35.114.191'
-alias otto_134='ssh administrator@10.35.114.192'
-alias otto_135='ssh administrator@10.35.114.193'
-
-#CMO OTTO Aliases
-alias cmo_fm='ssh administrator@10.37.22.22'
-alias otto_130='ssh administrator@10.37.108.31'
