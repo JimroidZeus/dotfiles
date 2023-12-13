@@ -12,8 +12,8 @@ Repo for my configuration files
     - `cp ./.bash_profile ./.bash_profile.bak`
 
 - Create Symlinks
-    - 'ln -s /home/<username>/dotfiles/.bashrc /home/<username>/.bashrc'
-    - 'ln -s /home/<username>/dotfiles/.bash_profile /home/<username>/.bash_profile'
+    - `ln -s /home/<username>/dotfiles/.bashrc /home/<username>/.bashrc`
+    - `ln -s /home/<username>/dotfiles/.bash_profile /home/<username>/.bash_profile`
 
 ### MacOS
 
