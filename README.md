@@ -14,6 +14,7 @@ Repo for my configuration files
 - Create Symlinks
     - `ln -s /home/<username>/dotfiles/.bashrc /home/<username>/.bashrc`
     - `ln -s /home/<username>/dotfiles/.bash_profile /home/<username>/.bash_profile`
+    - `ln -s /home/<username>/dotfiles/.dir_colors /home/<username>/.dir_colors`
 
 ### MacOS
 
