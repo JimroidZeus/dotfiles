@@ -5,7 +5,7 @@ Repo for my configuration files
 
 ### Linux
 - Clone repo into `/home/<username>/dotfiles`
-    - `git clone https://<username>@github.com/JimroidZeus/dotfiles.git ./dotfiles`
+    - `git clone https://git@github.com/JimroidZeus/dotfiles.git ./dotfiles`
 
 - Backup existing `.bashrc` and `.bash_profile` files.
     - `cp ./.bashrc ./.bashrc.bak`
