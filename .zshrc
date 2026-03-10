@@ -1,16 +1,14 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-DOCKER_HOST=unix://$HOME/.colima/docker.sock
-
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="/usr/local/opt/libpq/bin:$PATH"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="colin"
+ZSH_THEME="the-one-theme"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -49,7 +47,7 @@ ZSH_THEME="colin"
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS=" %F{yellow}processing...%f"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -72,15 +70,16 @@ COMPLETION_WAITING_DOTS=" %F{yellow}processing...%f"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found extract kubectx zdharma-continuum/fast-syntax-highlighting)
+#plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-eval "$(conda "shell.$(basename "${SHELL}")" hook)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
-#export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# homebrew prefix
+export HOMEBREW_PREFIX=$(brew --prefix)
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -106,28 +105,56 @@ eval "$(conda "shell.$(basename "${SHELL}")" hook)"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ..='cd ..'
-alias ...='cd ..; cd ..'
-alias ....='cd ..; cd ..; cd..'
-alias cd..='cd ..'
 
-alias q='exit'
+# activate antigen
+source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
 
-alias ls='ls -l --color'
-alias la='ls -la --color'
+source $ZSH/themes/the-one-theme.zsh-theme
 
-alias grep='grep -n --color'
-alias cd..='cd ..'
-alias plz='sudo'
+setopt correct
+setopt prompt_subst
+setopt hist_expire_dups_first
+setopt hist_find_no_dups
+setopt hist_ignore_dups
+setopt hist_reduce_blanks
 
-alias gs='git status'
-alias gc='git commit -m'
-alias gf='git fetch'
-alias gfo='git fetch origin'
-alias gp='git pull'
-alias gpo='git pull origin'
-alias gpsh='git push'
-alias gpsho='git push origin'
-alias gd='git diff'
-alias gfa='git fetch --all'
+antigen use oh-my-zsh
 
+# plugins
+antigen bundle git
+antigen bundle command-not-found
+antigen bundle extract
+antigen bundle z
+antigen bundle zdharma-continuum/fast-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle hlissner/zsh-autopair
+antigen bundle RobSis/zsh-reentry-hook
+#antigen bundle kubectx
+
+# theme
+antigen theme $ZSH/themes "the-one-theme" --no-local-clone
+
+# tell antigen to use this config
+antigen apply
+
+# modify fast syntax highlighting theme
+fast-theme default &> /dev/null
+typeset -A FAST_HIGHLIGHT_STYLES
+FAST_HIGHLIGHT_STYLES[defaultpath-to-dir]="fg=magenta,bold"
+
+# Homebrew bin path
+export PATH="$HOMEBREW_PREFIX/bin:$PATH"
+
+if [ -f ~/Herd/civia-app/.civia/aliases.sh ]; then
+    source ~/Herd/civia-app/.civia/aliases.sh
+fi
+
+# Herd injected PHP binary.
+export PATH="/Users/colinmacpherson/Library/Application Support/Herd/bin:$PATH"
+
+# Herd injected PHP 8.4 configuration.
+export HERD_PHP_84_INI_SCAN_DIR="/Users/colinmacpherson/Library/Application Support/Herd/config/php/84/"
+
+
+# Herd injected PHP 8.5 configuration.
+export HERD_PHP_85_INI_SCAN_DIR="/Users/colinmacpherson/Library/Application Support/Herd/config/php/85/"
