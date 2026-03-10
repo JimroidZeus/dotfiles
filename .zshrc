@@ -131,5 +131,3 @@ alias gpsho='git push origin'
 alias gd='git diff'
 alias gfa='git fetch --all'
 
-alias fawkes='cd ~/src/scale-fawkes && conda activate fawkes'
-alias logicstream='cd ~/src/LogicStream'
